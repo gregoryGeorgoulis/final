@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<h2>here are the senators from <%= @state.name %></h2>
+<% @results.each do |item| %>
+		<h3><%= item['first_name'] %> <%= item['last_name'] %></h3>
+		<p><%= item['office'] %></p>
+		<p><%= item['oc_email'] %></p>
+		<p><%= item['phone'] %></p>
+		<p><%= item['term-start'] %></p>
+		<p><%= item['term_end'] %></p>
+
+
+<% end %>
+<h2>here are the representitives from <%= @state.name %></h2>
+<% @results1.each do |item| %>
+		<h3><%= item['first_name'] %> <%= item['last_name'] %></h3>
+		<p><%= item['district'] %></p>
+		<p><%= item['chamber'] %></p>
+		<p><%= item['office'] %></p>
+		<p><%= item['oc_email'] %></p>
+		<p><%= item['phone'] %></p>
+
+<% end %>
+
+</body>
+</html>
