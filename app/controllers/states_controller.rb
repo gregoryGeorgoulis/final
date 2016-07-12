@@ -22,20 +22,20 @@ class StatesController < ApplicationController
 		@results1 = @response1['results']
 	end
 
-	def polster
+	def graph
+		
+	end
 
-		uri ="http://elections.huffingtonpost.com/pollster/api/polls.json?state=NY"
+	def polster
+		uri ="http://elections.huffingtonpost.com/pollster/api/polls.json?topic=2016-president"
     @response = HTTParty.get(uri) 
     respond_to do |format|
     	format.json {render json: @response}
-    end
-    
-  #   puts '============================'
-  #   puts response[0]['questions'][0]['topic']
-  #   puts response[0]['questions'][0]['name']
-		# puts '============================'
+  end
+ end 
+  
    
-	end
+
 
 
 
