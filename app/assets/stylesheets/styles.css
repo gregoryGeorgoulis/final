@@ -25,6 +25,9 @@ body{
 	padding-top: 5rem;
 	column-count: 5;
 }
+.graph{
+	display: inline-block;
+}
 
 a{
 	font-family: 'Kaushan Script', cursive;

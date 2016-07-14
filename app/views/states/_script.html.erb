@@ -29,30 +29,30 @@
 					/// this is name
 					data[9].questions[0].subpopulations[0].responses.forEach(function(data) 
 					{ nameData.push(data.choice); });
-					data[9].questions[0].subpopulations[1].responses.forEach(function(data) 
-					{ nameData2.push(data.choice); });
-					data[9].questions[0].subpopulations[2].responses.forEach(function(data) 
-					{ nameData3.push(data.choice); });
+					// data[9].questions[0].subpopulations[1].responses.forEach(function(data) 
+					// { nameData2.push(data.choice); });
+					// data[9].questions[0].subpopulations[2].responses.forEach(function(data) 
+					// { nameData3.push(data.choice); });
 					//// this is nums
 					data[9].questions[0].subpopulations[0].responses.forEach(function(data) 
 					{ numData.push(data.value) });
-					data[9].questions[0].subpopulations[1].responses.forEach(function(data) 
-					{ numData2.push(data.value) });
-					data[9].questions[0].subpopulations[2].responses.forEach(function(data) 
-					{ numData3.push(data.value) });
+					// data[9].questions[0].subpopulations[1].responses.forEach(function(data) 
+					// { numData2.push(data.value) });
+					// data[9].questions[0].subpopulations[2].responses.forEach(function(data) 
+					// { numData3.push(data.value) });
 					///////// this is label 
 					label1 = data[9].questions[0].subpopulations[0].name
-					label2 = data[9].questions[0].subpopulations[1].name
-					label3 = data[9].questions[0].subpopulations[2].name
+					// label2 = data[9].questions[0].subpopulations[1].name
+					// label3 = data[9].questions[0].subpopulations[2].name
 
 					if ($("#button").hasClass("bar pie")) {
 						createPie(numData, label1, nameData);
-						createPie(numData2, label2, nameData2);
-						createPie(numData3, label3, nameData3);
+						// createPie(numData2, label2, nameData2);
+						// createPie(numData3, label3, nameData3);
 					} else {
 						createGraph(numData, label1, nameData);
-						createGraph(numData2, label2, nameData2)
-						createGraph(numData3, label3, nameData3)
+						// createGraph(numData2, label2, nameData2)
+						// createGraph(numData3, label3, nameData3)
 					}
 				}
 			});
@@ -132,6 +132,11 @@
 			canvas.append("g")
 				.attr("transform", "translate(0, 200)")
 				.call(axis);
+
+			var shape = d3.symbolStar();
+
+			canvas.append()
+
 		}
 
 		var createPie = function(theData, label, name) {
