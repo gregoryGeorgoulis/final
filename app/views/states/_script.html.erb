@@ -132,11 +132,6 @@
 			canvas.append("g")
 				.attr("transform", "translate(0, 200)")
 				.call(axis);
-
-			var shape = d3.symbolStar();
-
-			canvas.append()
-
 		}
 
 		var createPie = function(theData, label, name) {
@@ -154,7 +149,7 @@
 
 			var group =
 				canvas.append("g")
-					.attr("transform", "translate(200, 200)");
+					.attr("transform", "translate(450, 200)");
 
 			var arc = 
 				d3.arc()
@@ -179,6 +174,34 @@
 			arcs.append("text")
 				.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
 				.text(function(d) { return d.data; });
+
+				var group1 =
+				canvas.append("g")
+					.attr("transform", "translate(50, 100)");
+
+
+				var key = 
+				group1.selectAll("rect")
+				.data(theData)
+				.enter()
+					.append("rect")
+					.attr("width", 20)
+					.attr("height", 20)
+					.attr("fill", function(d) { return color(d) })
+					.attr("y", function(d, i) { return i * 40 })
+
+
+					key.select("g")
+					.data(name)
+					.enter()
+			    .append("text")
+			    .text(function(d) { return d; })
+			    .attr("fill", "black")
+			    .data(theData)	
+			    .attr("X", 50)
+			    .attr("y",function(d, i) { return (i * 40) ; });
+
+				
 		};
 
 		daJax();
