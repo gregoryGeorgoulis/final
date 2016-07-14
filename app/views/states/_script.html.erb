@@ -186,7 +186,8 @@
 					.attr("width", 20)
 					.attr("height", 20)
 					.attr("fill", function(d) { return color(d) })
-					.attr("y", function(d, i) { return i * 40 })
+					.attr("x", -20)
+					.attr("y", function(d, i) { return (i * 40) -15 })
 
 					key.select("g")
 						.data(name)
@@ -195,8 +196,8 @@
 				    .text(function(d) { return d; })
 				    .attr("fill", "black")
 				    .data(theData)	
-				    .attr("x", 30)
-				    .attr("y",function(d, i) { return (i * 40) + 15; });
+				    .attr("x", 0)
+				    .attr("y",function(d, i) { return (i * 40); });
 
 			    group.append("text")
 						.attr("x", (0))             
