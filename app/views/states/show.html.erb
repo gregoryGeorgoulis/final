@@ -4,28 +4,32 @@
 	<title></title>
 </head>
 <body>
-
-<h2>here are the senators from <%= @state.name %></h2>
-<% @results.each do |item| %>
-		<h3><%= item['first_name'] %> <%= item['last_name'] %></h3>
-		<p><%= item['office'] %></p>
-		<p><%= item['oc_email'] %></p>
-		<p><%= item['phone'] %></p>
-		<p><%= item['term-start'] %></p>
-		<p><%= item['term_end'] %></p>
-
-
-<% end %>
-<h2>here are the representitives from <%= @state.name %></h2>
-<% @results1.each do |item| %>
-		<h3><%= item['first_name'] %> <%= item['last_name'] %></h3>
-		<p><%= item['district'] %></p>
-		<p><%= item['chamber'] %></p>
-		<p><%= item['office'] %></p>
-		<p><%= item['oc_email'] %></p>
-		<p><%= item['phone'] %></p>
-
-<% end %>
+<h2>Here are the senators from <%= @state.name %></h2>
+<div id="senator">
+	<% @results.each do |item| %>
+		<div class="senator">
+			<h3><%= item['first_name'] %> <%= item['last_name'] %></h3>
+			<p>Office: <%= item['office'] %></p>
+			<p>Email: <%= item['oc_email'] %></p>
+			<p>Phone: <%= item['phone'] %></p>
+			<p><%= item['term-start'] %></p>
+			<p>Term-end: <%= item['term_end'] %></p>
+		</div>
+	<% end %>
+</div>
+<h2>Here are the representitives from <%= @state.name %></h2>
+<div id="congress">
+	<% @results1.each do |item| %>
+		<div class="congress">
+			<h3><%= item['first_name'] %> <%= item['last_name'] %></h3>
+			<p>District: <%= item['district'] %></p>
+			<p>Chamber: <%= item['chamber'] %></p>
+			<p>Office:  <%= item['office'] %></p>
+			<p>Email: <%= item['oc_email'] %></p>
+			<p>Phone: <%= item['phone'] %></p>
+		</div>
+	<% end %>
+</div>
 
 
 
