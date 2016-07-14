@@ -6,9 +6,13 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<div id="header">
 <%= link_to 'Home', root_path %>
+<br>
 <%= link_to "Hillary Vs Trump", states_graph_path %>
+</div>
+<body>
+
 <%= yield %>
 
 </body>

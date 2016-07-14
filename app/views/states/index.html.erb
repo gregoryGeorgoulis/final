@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 </head>
-<body>
-
-
-	<% @states.each do |state| %>
-		<h3><%= link_to state.name, state_path(state.id) %></h3>	
-	<% end %>
-
+<body >
+	<div id="dabody">
+		<div id="wrapper">
+			<% @states.each do |state| %>
+				<div id="star">
+					<button class="state"><%= link_to state.initials, state_path(state.id) %></button>
+				</div>
+			<% end %>
+		</div>
+	</div>
 </body>
 </html>
 

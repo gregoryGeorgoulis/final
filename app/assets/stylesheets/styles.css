@@ -1,0 +1,52 @@
+*{
+	text-align: center;
+}
+#header{
+	color: black;
+	text-align: center;
+}
+#dabody{
+	background: url('https://pixabay.com/static/uploads/photo/2014/07/08/04/18/american-flag-386512_960_720.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#header{
+	width: 100%
+}
+#wrapper {
+	padding-top: 5rem;
+	column-count: 5;
+}
+
+a{
+	font-family: 'Kaushan Script', cursive;
+	color: black;
+	text-decoration: none;
+}
+
+.state {
+
+	width: 8rem;
+	height: 8rem;
+	-webkit-border-radius: 70;
+  -moz-border-radius: 70;
+  border-radius: 70px;
+  font-family: Courier New;
+  color: #000000;
+  font-size: 20px;
+  padding: 40px;
+  background: #ffffff;
+  border: solid #073e61 2px;
+  text-decoration: none;
+}
+
+.state:hover {
+	color: white;
+  background: #001a66;
+  background-image: -webkit-linear-gradient(top, #001a66, #c20a0a);
+  background-image: -moz-linear-gradient(top, #001a66, #c20a0a);
+  background-image: -ms-linear-gradient(top, #001a66, #c20a0a);
+  background-image: -o-linear-gradient(top, #001a66, #c20a0a);
+  background-image: linear-gradient(to bottom, #001a66, #c20a0a);
+ text-decoration: none;
+}
