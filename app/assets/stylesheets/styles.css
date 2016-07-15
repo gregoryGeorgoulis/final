@@ -27,22 +27,22 @@ body{
 	column-count: 5;
 }
 #senator{
+	margin-top: 1%;
 	column-count: 2;
+	width: 50%;
+	margin-left: 30rem;
 }
 .senator{
+	padding: 1%;
 	border: 2px solid black;
-	width: 50%;
-	margin-left: 25%;
 }
 #congress {
-
 	white-space: nowrap;
 	padding-bottom: 3rem;
 	overflow: auto;
 	overflow-x:scroll; 
 	overflow-y:hidden;
 }
-
 .congress {
 	border: 2px solid black;
 	display: inline-block;
@@ -77,12 +77,10 @@ h1{
   font-family: Courier New;
   color: #000000;
   font-size: 20px;
- 
   background: #ffffff;
   border: solid #073e61 2px;
   text-decoration: none;
 }
-
 .state:hover {
 	color: white;
   background: #fc3c3c;
@@ -93,3 +91,114 @@ h1{
   background-image: linear-gradient(to bottom, #fc3c3c, #1238fa);
   text-decoration: none;
 }
+
+@media (max-width: 400px){
+
+	body{
+		width: 100vw;
+		margin: 0;
+	}
+	#header{
+		color: white;
+		text-align: center;
+		width: 100%
+	}
+	.nav{
+		color: white;
+		display: inline-block;
+		margin-left: 2%;
+		margin-right: 2%;
+	}
+	#dabody{
+		height: 100vh;
+		background: url('http://bestanimations.com/Flags/USA/usa-american-flag-waving-animated-gif-30.gif');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+	#wrapper {
+		padding-top: 5rem;
+		column-count: 3;
+	}
+	#senator{
+		width: 90%;
+		column-count: 1;
+		margin-left: 2rem;
+	}
+	.senator{
+		padding: 1%;
+		border: 2px solid black;
+	}
+	#congress {
+		white-space: nowrap;
+		padding-bottom: 3rem;
+		overflow: auto;
+		overflow-x:scroll; 
+		overflow-y:hidden;
+	}
+	.congress {
+		border: 2px solid black;
+		display: inline-block;
+		padding: 1%;
+	}
+	.nav{
+		font-size: 2rem;
+	}
+	.nav1{
+		color: white;
+	}
+	.nav2{
+		color: black;
+	}
+	a{
+		font-family: 'Kaushan Script', cursive;
+		color: black;
+		display: inline-block;
+		text-decoration: none;
+	}
+	h1{
+		padding-top: 1rem;
+		font-family: 'Special Elite', cursive;
+		margin: 0;
+	}
+	.state {
+		width: 12rem;
+		height: 12rem;
+		-webkit-border-radius: 70;
+	  -moz-border-radius: 70;
+	  border-radius: 70px;
+	  font-family: Courier New;
+	  color: #000000;
+	  font-size: 20px;
+	  background: #ffffff;
+	  border: solid #073e61 2px;
+	  text-decoration: none;
+	}
+	.state:hover {
+		color: white;
+	  background: #fc3c3c;
+	  background-image: -webkit-linear-gradient(top, #fc3c3c, #1238fa);
+	  background-image: -moz-linear-gradient(top, #fc3c3c, #1238fa);
+	  background-image: -ms-linear-gradient(top, #fc3c3c, #1238fa);
+	  background-image: -o-linear-gradient(top, #fc3c3c, #1238fa);
+	  background-image: linear-gradient(to bottom, #fc3c3c, #1238fa);
+	  text-decoration: none;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

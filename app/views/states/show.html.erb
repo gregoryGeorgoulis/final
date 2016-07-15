@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-	
-</head>
 <body>
-
-	<div id="header">
-		<h1 class="nav2">Know Your State Officals</h1>
-		<p class="nav"><%= link_to 'Home',  root_path, class: "nav2" %></p>
-		<p class="nav">	<%= link_to "Hillary Vs Trump", states_graph_path,class: "nav2" %></p>
-	</div>
-
-<h2>Here are the senators from <%= @state.name %></h2>
+<div id="header">
+	<h1 class="nav2">Know Your State Officals</h1>
+	<p class="nav"><%= link_to 'Home',  root_path, class: "nav2" %></p>
+	<p class="nav">	<%= link_to "Hillary Vs Trump", states_graph_path,class: "nav2" %></p>
+</div>
+<h2 class="title">Here are the senators from <%= @state.name %></h2>
 	<div id="senator">
 		<% @results.each do |item| %>
 			<div class="senator">
@@ -24,7 +19,7 @@
 			</div>
 		<% end %>
 	</div>
-	<h2>Here are the representitives from <%= @state.name %></h2>
+	<h2 class="title">Here are the representitives from <%= @state.name %></h2>
 	<div id="congress">
 		<% @results1.each do |item| %>
 			<div class="congress">
