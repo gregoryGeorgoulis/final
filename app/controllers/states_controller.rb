@@ -4,10 +4,12 @@ class StatesController < ApplicationController
 		@states = State.all
 
 	end
-
+# this route makes two api calls and grabs data about congress and senate depending on which state id is passed in
 	def show
 		@state = State.find(params[:id])
+
 		puts '============================'
+		# this is where i get the state initials so i can put them in the api call to get the right state data
 		puts @state.initials
 		puts '============================'
 		da_key = ENV['SUN_LIGHT_KEY']
@@ -25,7 +27,7 @@ class StatesController < ApplicationController
 	def graph
 		
 	end
-
+# grab the pollster data here and formt it to send back json to my front end api call
 	def polster
 		uri ="http://elections.huffingtonpost.com/pollster/api/polls.json?topic=2016-president"
     @response = HTTParty.get(uri) 

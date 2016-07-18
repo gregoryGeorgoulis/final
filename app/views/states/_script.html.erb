@@ -1,6 +1,7 @@
 <script type="text/javascript">
+// this is a partail that contents javascript tags that make a ajax call to the pollster api and puts it into the bar and pie chart templates i created using d3
 	$(document).ready(function() {
-
+		//this function toggles the button for switching from a bar to a pie chart
 		var toggleButton = function() {
 			$("#button").click(function() {
 				if ($("#button").html() === "Change to Pie") {
@@ -14,8 +15,9 @@
 				} 
 			})
 		}
-		
+		// in the this ajax call i hit the polster route in my controller and grab the formated json data and plug them into the graph templates
 		var daJax = function(){
+			// i create empty array to hold the data 
 			var numData = [];
 			var nameData = [];
 			$.ajax({
@@ -24,20 +26,22 @@
 				dataType: 'json',
 				success: function(data) {
 					$("#container").empty();
-					console.log(data);
+					//i search through the data and use a conditional to grab the approriate category 
+					//the reason i have to do this is because the polster api changes the data very often when knew polls come in.
 					data.forEach(function(data){
 						if (data.questions[0].code === "16-US-Pres-GE TrumpvClinton") {
-							console.log('this is wat i want')
-							console.log(data)
 							data.questions[0].subpopulations[0].responses.forEach(function(data) 
 							{ nameData.push(data.choice); });
 							data.questions[0].subpopulations[0].responses.forEach(function(data) 
 							{ numData.push(data.value) });
 							label1 = data.questions[0].subpopulations[0].name
 							label2 = data.questions[0].name
+							//this is the contitional i use to display the different graphs
 							if ($("#button").hasClass("bar pie")) {
+								// i plug the data into the graph template here 
 							createPie(numData, label1, nameData, label2);
 							} else {
+								// i plug the data into the graph template here
 							createGraph(numData, label1, nameData, label2);	
 							}
 						} else {
@@ -49,26 +53,27 @@
 		}
 		
 
-		
+		//bar graph template
 		var createGraph = function(theData, label, name, cat) {
+			//i make margins so i can pin the title to the graph
 			var margin = {top: 80, right: 10, bottom: 20, left: 10};
 			var width = 450;
 			var height = 300;
-
+			// widthscale is so that the data is to scale for the graph
 			var widthScale = 
 			d3.scaleLinear()
 				.domain([0, 100])
 				.range([0, width]);
-
+				//set the color for bars here
 			var color = 
 				d3.scaleLinear()
 				.domain([0, 100])
 				.range(["green", "yellow"]);
-
+				//this creates the axis bar 
 			var axis = 
 			d3.axisBottom()
 				.scale(widthScale);
-
+			//this pins the overall canvas for the d3 graphs i append it to a html div i have already defined 
 			var canvas = 
 			d3.select("#container")
 				.append("div")
@@ -78,7 +83,7 @@
 				.attr("height", height)
 				.append("g")
 				.attr("transform", "translate(0, 100)");
-
+			//this is for the numbers on the bars i use the data that i use to create the bars(integers) and just put them as text at the end of the bar
 			canvas.selectAll("text")
 			.data(theData)
 			.enter()
@@ -86,7 +91,8 @@
 	    .text(function(d) { return d; })	
 	    .attr("x",function(d) { return widthScale(d); })
 	    .attr("y",function(d, i) { return (i * 30) + 15 ; });
-
+	    // i use the name data i grab from ajax call then append the names as text next to the number data on the bars
+	    // i have to switch the data back so that i can get the name to appear in the right place
 	    canvas.selectAll("g")
 			.data(name)
 			.enter()
@@ -95,7 +101,7 @@
 	    .data(theData)	
 	    .attr("x",function(d) { return widthScale(d) + 20; })
 	    .attr("y",function(d, i) { return (i * 30) + 15 ; });
-
+	    // i create the bars here by appending rectangles here and setting their width to the data but becaue i use an animation i just set it to 0 
 			var bars = 
 			canvas.selectAll("rect")
 				.data(theData)
@@ -105,11 +111,11 @@
 				.attr("height", 20)
 				.attr("fill", function(d) { return color(d) })
 				.attr("y", function(d, i) { return i * 30 })
-
+				// i use the data here to set the width of the bars here because i want the bars to move out from 0 to the data number as an animation 
 			bars.transition()
 				.duration(1500)
 				.attr("width",function(d) { return widthScale(d) })
-
+				 //this to append the label to the graph
 			canvas.append("text")
 				.attr("x", (width / 2))             
 	      .attr("y", 0 - (margin.top / 2))
@@ -117,7 +123,7 @@
 	      .style("font-size", "16px") 
 	      .style("text-decoration", "underline")  
 	      .text(label);
-
+	      //this to append the category to the graph
 	      canvas.append("text")
 				.attr("x", (width / 2))             
 	      .attr("y", 0 - (margin.top / 1))
@@ -125,7 +131,7 @@
 	      .style("font-size", "16px") 
 	      .style("text-decoration", "underline")  
 	      .text(cat);
-
+	      // this appends the axis 
 			canvas.append("g")
 				.attr("transform", "translate(0, -20)")
 				.call(axis);
@@ -136,40 +142,41 @@
 			var r = 150;
 			var width = 900;
 			var height = 400;
-
+			//setting the colors that are used in the pie chart
 			var color =
 				d3.scaleOrdinal()
 					.range([ "green", "orange","red","blue","pink","yellow","brown","purple","teal" ]);
-
+			// appending the overall canvas
 			var canvas = 
 				d3.select("#container").append("svg")
 					.attr("width", width)
 					.attr("height", height);
-
+			//appending a group t put the pie chart in
 			var group =
 				canvas.append("g")
 					.attr("transform", "translate(450, 200)");
-
+			// creating the pie chart using d3's built in arc method
+			// you have to set inner and outer radius to make the pie its a dounghnut so i set inner value at 100 outter is set above
 			var arc = 
 				d3.arc()
 					.innerRadius(100)
 					.outerRadius(r);
-
+				// using built in de pie method and setting data to it 
 			var pie =
 				d3.pie()
 				.value(function(d) { return d; });
-
+				// this is where i append the slices of the pie each size depends on the data given
 			var arcs =
 				group.selectAll("arc")
 				.data(pie(theData))
 				.enter()
 				.append("g")
 				.attr("class", "arc");
-
+				// d3 uses paths to make the circle shape of the pie 
 			arcs.append("path")
 				.attr("d", arc)
 				.attr("fill", function(d) { return color(d.data); });
-
+			// this sets the text for the pie data in each slice
 			arcs.append("text")
 				.attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
 				.text(function(d) { return d.data; });
@@ -177,7 +184,7 @@
 				var group1 =
 				canvas.append("g")
 					.attr("transform", "translate(50, 100)");
-
+					// i made a seperate chart that hold the key for the data in the pie chart
 				var key = 
 				group1.selectAll("rect")
 				.data(theData)
@@ -220,6 +227,7 @@
 		toggleButton();
 	});
 </script>
+
 
 
 
