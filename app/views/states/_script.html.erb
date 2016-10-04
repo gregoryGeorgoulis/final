@@ -29,7 +29,7 @@
 					//i search through the data and use a conditional to grab the approriate category 
 					//the reason i have to do this is because the polster api changes the data very often when knew polls come in.
 					data.forEach(function(data){
-						if (data.questions[0].code === "2016-president") {
+						if (data.questions[0].code === "16-NY-Pres-GE TrumpvClinton") {
 							data.questions[0].subpopulations[0].responses.forEach(function(data) 
 							{ nameData.push(data.choice); });
 							data.questions[0].subpopulations[0].responses.forEach(function(data) 

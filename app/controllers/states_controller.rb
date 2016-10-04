@@ -29,7 +29,7 @@ class StatesController < ApplicationController
 	end
 # grab the pollster data here and formt it to send back json to my front end api call
 	def polster
-		uri ="http://http://elections.huffingtonpost.com/pollster/api/polls.json?question=16-CO-Pres-GE%20TrumpvClinton"
+		uri ="http://http://elections.huffingtonpost.com/pollster/api/polls.json?question=16-NY-Pres-GE%20TrumpvClinton"
     @response = HTTParty.get(uri) 
     respond_to do |format|
     	format.json {render json: @response}
