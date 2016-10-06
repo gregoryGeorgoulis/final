@@ -2,7 +2,7 @@
 <html>
 <body>
 <div id="header">
-	<h1 class="nav2">Know Your State Officals</h1>
+	<h1 class="nav2">Know Your State Officials</h1>
 	<p class="nav"><%= link_to 'Home',  root_path, class: "nav2" %></p>
 	<p class="nav">	<%= link_to "Hillary Vs Trump", states_graph_path,class: "nav2" %></p>
 </div>
@@ -19,13 +19,13 @@
 			</div>
 		<% end %>
 	</div>
-	<h2 class="title">Here are the representitives from <%= @state.name %></h2>
+	<h2 class="title">Here are the representatives from <%= @state.name %></h2>
 	<div id="congress">
 		<% @results1.each do |item| %>
 			<div class="congress">
 				<h3><%= item['first_name'] %> <%= item['last_name'] %></h3>
 				<p>District: <%= item['district'] %></p>
-				<p>Chamber: <%= item['chamber'] %></p>
+				<p>Chamber: <%= item['chamber'].capitalize %></p>
 				<p>Office:  <%= item['office'] %></p>
 				<p>Email: <%= item['oc_email'] %></p>
 				<p>Phone: <%= item['phone'] %></p>
